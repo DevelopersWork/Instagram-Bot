@@ -1,0 +1,14 @@
+{
+    "YouTubeDataAPI": {
+        "search": {
+            "maxResults": 10,
+            "publishedAfter": "1999-01-01T00:00:00Z",
+            "publishedBefore": "9999-12-31T23:59:59Z",
+            "q": "\"#shorts\"",
+            "part": "snippet",
+            "order": "date",
+            "type": "video",
+            "videoDuration": "short"
+        }
+    }
+}

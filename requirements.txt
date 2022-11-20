@@ -1,0 +1,2 @@
+google-api-python-client==2.65.0
+pytube==12.1.0
