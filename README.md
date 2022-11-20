@@ -52,3 +52,4 @@ INSTA_2AUTH=true
 Give a ⭐️ if this project helped you!
 
 ***
+<h3 align="center"><b>Note: Educational Purposes Only</b><h3>
