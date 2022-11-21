@@ -74,6 +74,8 @@ class YouTubeDataAPI:
         self.__timestamp = datetime.datetime.now().strftime('%Y-%m-%dT00:00:00Z')
         self.__dir_exists = False
 
+        logging.info("YouTubeDataAPI.__setup():: {0}".format(self.__timestamp))
+
         dir = self.__dir.rstrip('/') + "/" + self.__timestamp
         if not os.path.exists(dir):
             os.makedirs(dir, exist_ok=True)

@@ -22,7 +22,6 @@ def main(key, dir):
     
         items = []
         for query in queries:
-            break
             
             result = youtube_data_api.search(query)
             date = query['publishedAfter'] if 'publishedAfter' in query.keys() else '1999-01-01T00:00:00Z'
