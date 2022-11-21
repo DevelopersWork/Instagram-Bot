@@ -27,7 +27,7 @@
   </a>
 </p>
 
-## Setup
+## Installing
 
 ```sh
 sh init.sh
@@ -35,8 +35,8 @@ sh init.sh
 
 ## Input parameters
 
-
 ### Environment Variables
+Create a file `.env`
 #### Example [[TEMPLATE].env](https://raw.githubusercontent.com/DevelopersWork/Instagram-Bot/master/%5BTEMPLATE%5D.env?token=GHSAT0AAAAAABXUHCQEUDIHP7OHA7X7BRHUY32LHVQ)
 ```yaml
 
@@ -53,6 +53,7 @@ INSTA_2AUTH=true
 ```
 
 ### JSON Configuration
+Create a file `query.json`
 #### Example [[TEMPLATE]query.json](https://raw.githubusercontent.com/DevelopersWork/Instagram-Bot/master/%5BTEMPLATE%5Dquery.json?token=GHSAT0AAAAAABXUHCQFFCB4BOMPUIVR73VGY32LOOQ)
 ```json
 
@@ -72,6 +73,12 @@ INSTA_2AUTH=true
   }
 ]
 
+```
+
+## Running
+
+```sh
+node index.js
 ```
 
 ## Show your support
