@@ -42,7 +42,7 @@ Create a file `.env`
 
 CHROME_EXECUTABLE_PATH='/usr/bin/chromium-browser'
 PYTHON=python3
-TEMPORARY_DIRECTORY='./tmp'
+TEMP_DIRECTORY='./tmp'
 
 YT_API_KEY='MyGoogleAPIKey'
 
