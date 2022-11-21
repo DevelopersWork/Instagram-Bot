@@ -4,13 +4,24 @@ import logging
 from pytube import YouTube
 
 class VideoDowloader:
-    def __init__(self, dir) -> None:
+    def __init__(self, dir: str) -> None:
+        """
+        Constructor
+
+        :param str dir: directory to save the dowloaded videos
+        :return: None
+        """
         logging.debug("VideoDowloader.__init__():: {STARTED}")
 
         self.__dir = dir.rstrip('/') + "/VideoDowloader/"
-        pass
 
-    def youtube(self, videoId):
+    def youtube(self, videoId: str) -> None:
+        """
+        Downloads the YouTube video from the provided videoId
+
+        :param str videoId: id of the video
+        :return: None
+        """
         logging.debug("VideoDowloader.youtube():: {STARTED}")
         try:
             dir = "{0}/{1}".format(self.__dir.rstrip('/'), videoId.strip('/'))
