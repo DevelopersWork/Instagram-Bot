@@ -1,4 +1,31 @@
 <h1 align="center">Welcome to Instagram Bot 👋</h1>
+<p align="center">Tool that <b>automates</b> your social media interactions to Post on Instagram.</p>
+<p align="center">Implemented in Python, Javascript using the Puppeteer<p>
+<p align="center">
+  <a href="https://github.com/developerswork/Instagram-Bot/blob/master/LICENSE" target="_blank">
+    <img src="https://img.shields.io/badge/license-GPLv3-blue.svg?style=for-the-badge" target="_blank"/>
+  </a>
+  <a href="https://www.python.org/" target="_blank">
+    <img src="https://img.shields.io/badge/built%20with-Python3-blue.svg?style=for-the-badge&logo=python" />
+  </a>
+  <a href="https://nodejs.org/en" target="_blank">
+    <img src="https://img.shields.io/badge/built%20with-NodeJs-green.svg?style=for-the-badge&logo=javascript" />
+  </a>
+  <a href="https://github.com/puppeteer/puppeteer" target="_blank">
+    <img src="https://img.shields.io/github/package-json/dependency-version/DevelopersWork/Instagram-Bot/puppeteer?filename=package.json&logo=puppeteer&style=for-the-badge" />
+  </a>
+</p>
+<p align="center">
+  <a href="#stars">
+    <img src="https://img.shields.io/github/stars/developerswork/Instagram-Bot?style=social" />
+  </a>
+  <a href="#forks">
+    <img src="https://img.shields.io/github/forks/developerswork/Instagram-Bot?style=social" />
+  </a>
+  <a href="#watchers">
+    <img src="https://img.shields.io/github/watchers/developerswork/Instagram-Bot?style=social" />
+  </a>
+</p>
 
 ## Setup
 
@@ -52,4 +79,5 @@ INSTA_2AUTH=true
 Give a ⭐️ if this project helped you!
 
 ***
-<h3 align="center"><b>Note: Educational Purposes Only</b><h3>
+
+> **Disclaimer**<a name="disclaimer" />: Please be aware that this tool is experimental. Do not use it in a manner that may cause you harm or inconvenience. I am not responsible for any consequences arising from its use.
