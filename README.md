@@ -1,5 +1,5 @@
 <h1 align="center">Welcome to Instagram Bot 👋</h1>
-<p align="center">Tool that <b>automates</b> your social media interactions to Post on Instagram.</p>
+<p align="center">Tool that <b>automates</b> your social media interactions on Instagram.</p>
 <p align="center">Implemented in Python, Javascript using the Puppeteer<p>
 <p align="center">
   <a href="https://github.com/developerswork/Instagram-Bot/blob/master/LICENSE" target="_blank">
@@ -27,8 +27,14 @@
   </a>
 </p>
 
+## Features
+
+### Posting Videos
+Download's videos from **YouTube** based on the configuration provided and posts those videos into the **Instagram**
+
 ## Installing
 
+Install required packages
 ```sh
 sh init.sh
 ```
@@ -38,7 +44,7 @@ sh init.sh
 ### Environment Variables
 Create a file `.env`
 #### Example [[TEMPLATE].env](https://raw.githubusercontent.com/DevelopersWork/Instagram-Bot/master/%5BTEMPLATE%5D.env?token=GHSAT0AAAAAABXUHCQEUDIHP7OHA7X7BRHUY32LHVQ)
-```yaml
+```env
 
 CHROME_EXECUTABLE_PATH='/usr/bin/chromium-browser'
 PYTHON=python3
