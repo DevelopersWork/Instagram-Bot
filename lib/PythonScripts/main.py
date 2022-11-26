@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import threading
 
 import logging
 
@@ -37,8 +38,17 @@ def main(key, dir):
             if 'publishedAfter' in query.keys():
                 query['publishedAfter'] = date
         
+        threads = []
         for item in items:
-            video_dowloader.youtube(item['id']['videoId'])
+            t = threading.Thread(target=video_dowloader.youtube, args=(item['id']['videoId'],))
+            t.start()
+            threads.append(t)
+            if len(threads)%5 == 0:
+                for thread in threads:
+                    thread.join()
+                
+        for t in threads:
+            t.join()
 
         if queries:
             with open('query.json', 'w') as fd:
