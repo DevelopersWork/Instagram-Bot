@@ -1,6 +1,7 @@
 import os
 import logging
 
+from pytube.cli import on_progress
 from pytube import YouTube
 
 class VideoDowloader:
@@ -32,9 +33,11 @@ class VideoDowloader:
 
             link = "https://www.youtube.com/watch?v={0}".format(videoId)
             
-            yt = YouTube(link)
+            yt = YouTube(link, on_progress_callback=on_progress)
             ys = yt.streams.get_highest_resolution()
             ys.download(dir)
+
+            return dir
             
         except Exception as ex:
             logging.error("VideoDowloader.youtube():: {0}".format(ex))

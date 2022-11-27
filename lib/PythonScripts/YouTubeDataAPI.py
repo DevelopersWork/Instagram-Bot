@@ -26,6 +26,9 @@ class YouTubeDataAPI:
             logging.error("YouTubeDataAPI.__init__():: {0}".format(ex))
 
     def search(self, query):
+        """
+        Returns the API result (Stores the API result in the <DIR>/YouTubeDataAPI/<etag>)
+        """
         logging.debug("YouTubeDataAPI.search():: {STARTED}")
         try:
             dir = self.__setup()
@@ -52,10 +55,13 @@ class YouTubeDataAPI:
 
         return {}
 
-    def isShort(self, videoId):
+    def isShort(self, item):
+        """
+        Returns the true if the provided video is a short
+        """
         logging.debug("YouTubeDataAPI.isShort():: {STARTED}")
-
         try:        
+            videoId = item['id']['videoId']
             url = "https://www.youtube.com/shorts/{0}".format(videoId)
             logging.debug("YouTubeDataAPI.isShort():: {0}".format(url))
 

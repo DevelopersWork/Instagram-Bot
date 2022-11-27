@@ -1,58 +1,52 @@
 import os
 import sys
 import json
-import threading
+import datetime
+
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 
 import logging
 
 from YouTubeDataAPI import YouTubeDataAPI
 from VideoDowloader import VideoDowloader
 
-def main(key, dir):
-    logging.info("main():: {STARTED}")
-    if not os.path.exists(dir):
-        os.makedirs(dir, exist_ok=True)
+global youtube_data_api, video_dowloader
+global KEY, DIR
 
-    youtube_data_api = YouTubeDataAPI(key, dir)
-    video_dowloader = VideoDowloader(dir)
+def downloadShortsOnly(item):
+    
+    if youtube_data_api.isShort(item):
+        return video_dowloader.youtube(item['id']['videoId'])
+
+    return False
+
+def main():
+    logging.info("main():: {STARTED}")
 
     try:
         queries = []
         with open('query.json', 'r') as fd:
             queries = json.load(fd)
-    
-        items = []
-        for query in queries:
+
+        # with ProcessPoolExecutor(max_workers = 4) as processPool:
+        #     processPool.map(youtube_data_api.search, queries)
             
-            result = youtube_data_api.search(query)
-            date = query['publishedAfter'] if 'publishedAfter' in query.keys() else '1999-01-01T00:00:00Z'
-
-            _items = []
-            if 'items' in result.keys():
-                for item in result['items']:
-                    if youtube_data_api.isShort(item['id']['videoId']):
-                        _items.append(item)
-                        date = max(date, item['snippet']['publishedAt'])
-            items.extend(_items)
-
-            if 'publishedAfter' in query.keys():
-                query['publishedAfter'] = date
+        timestamp = datetime.datetime.now().strftime('%Y-%m-%dT00:00:00Z')
+        dir = "{0}/{1}/{2}".format(
+            DIR.rstrip('/'),
+            "YouTubeDataAPI",
+            timestamp
+        )
         
-        threads = []
-        for item in items:
-            t = threading.Thread(target=video_dowloader.youtube, args=(item['id']['videoId'],))
-            t.start()
-            threads.append(t)
-            if len(threads)%5 == 0:
-                for thread in threads:
-                    thread.join()
-                
-        for t in threads:
-            t.join()
+        items = []
+        for file in os.listdir(dir):
+            with open("{0}/{1}".format(dir, file), 'r') as fd:
+                data = json.load(fd)
+                items.extend(data['items'])
 
-        if queries:
-            with open('query.json', 'w') as fd:
-                json.dump(queries, fd)
+        with ThreadPoolExecutor(max_workers = 8) as threadPool:
+            threadPool.map(downloadShortsOnly, items)
+            
         logging.info("main():: {COMPLETED}")
         sys.exit(1)
     except Exception as ex:
@@ -72,5 +66,10 @@ if __name__ == '__main__':
 
     # temporary directory to store indermediates
     DIR = os.path.abspath(sys.argv[2].rstrip('/') + "/pythonScripts/")
+    if not os.path.exists(DIR):
+        os.makedirs(DIR, exist_ok=True)
 
-    main(KEY, DIR)
+    youtube_data_api = YouTubeDataAPI(KEY, DIR)
+    video_dowloader = VideoDowloader(DIR)
+
+    main()
