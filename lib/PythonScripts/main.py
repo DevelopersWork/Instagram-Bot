@@ -28,8 +28,8 @@ def main():
         with open('query.json', 'r') as fd:
             queries = json.load(fd)
 
-        # with ProcessPoolExecutor(max_workers = 4) as processPool:
-        #     processPool.map(youtube_data_api.search, queries)
+        with ProcessPoolExecutor(max_workers = 4) as processPool:
+            processPool.map(youtube_data_api.search, queries)
             
         timestamp = datetime.datetime.now().strftime('%Y-%m-%dT00:00:00Z')
         dir = "{0}/{1}/{2}".format(
